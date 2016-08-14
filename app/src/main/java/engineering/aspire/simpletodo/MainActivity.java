@@ -54,6 +54,8 @@ public class MainActivity extends AppCompatActivity {
                     public void onItemClick(AdapterView<?> adapter,
                                                View item, int pos, long id) {
                         Log.v("TODOAPP", "in onItemClick");
+                        // TODO: Build Intent to start activity_edit_item
+                        // TODO: Start activity_edit_item
                     }
                 }
         );
