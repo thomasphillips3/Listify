@@ -2,6 +2,7 @@ package engineering.aspire.simpletodo;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -47,6 +48,15 @@ public class MainActivity extends AppCompatActivity {
                         return true;
                     }
                 });
+        lvItems.setOnItemClickListener(
+                new AdapterView.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(AdapterView<?> adapter,
+                                               View item, int pos, long id) {
+                        Log.v("TODOAPP", "in onItemClick");
+                    }
+                }
+        );
     }
 
     private void readItems() {
