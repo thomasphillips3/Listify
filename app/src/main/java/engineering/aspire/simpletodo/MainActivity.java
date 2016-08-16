@@ -1,5 +1,6 @@
 package engineering.aspire.simpletodo;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -54,11 +55,11 @@ public class MainActivity extends AppCompatActivity {
                     public void onItemClick(AdapterView<?> adapter,
                                                View item, int pos, long id) {
                         Log.v("TODOAPP", "in onItemClick");
-                        // TODO: Build Intent to start activity_edit_item
-                        // TODO: Start activity_edit_item
+                        Intent launchEditItemActivity = new Intent(MainActivity.this, EditItemActivity.class);
+                        launchEditItemActivity.setAction(Intent.ACTION_EDIT);
+                        startActivity(launchEditItemActivity);
                     }
-                }
-        );
+                });
     }
 
     private void readItems() {
