@@ -13,12 +13,13 @@ public class EditItemActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_item);
         String itemUnderEdit = getIntent().getStringExtra("itemUnderEdit");
+        int pos = getIntent().getExtras().getInt("pos");
         EditText etCurrentItem = (EditText) findViewById(R.id.etEditCurrentItem);
         etCurrentItem.setText(itemUnderEdit);
-        setupButtonListener();
+        setupButtonListener(pos);
     }
 
-    private void setupButtonListener() {
+    private void setupButtonListener(final int pos) {
         final Button btnUpdate = (Button) findViewById(R.id.btnUpdate);
         btnUpdate.setOnClickListener(
                 new View.OnClickListener() {
@@ -27,6 +28,7 @@ public class EditItemActivity extends AppCompatActivity {
                         String editedText = etEditedItem.getText().toString();
                         Intent data = new Intent (EditItemActivity.this, MainActivity.class);
                         data.putExtra("editedText", editedText);
+                        data.putExtra("pos", pos);
                         setResult(RESULT_OK, data);
                         finish();
                     }

@@ -3,7 +3,6 @@ package engineering.aspire.simpletodo;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -34,15 +33,18 @@ public class MainActivity extends AppCompatActivity {
         itemsAdapter = new ArrayAdapter<String>(this,
                 android.R.layout.simple_list_item_1, items);
         lvItems.setAdapter(itemsAdapter);
-        items.add("First jawn");
-        items.add("Second thang");
+        items.add("Add new item...");
         setupListViewListeners();
     }
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         String editedItemText = data.getExtras().getString("editedText");
+
+        int pos = data.getExtras().getInt("pos");
+
         // TODO: Update ListView item with data Intent returned from EditItemActivity
-        Log.v("tomtodo", "edited to: " + editedItemText);
+        items.set(pos, editedItemText);
+        itemsAdapter.notifyDataSetChanged();
     }
 
     private void setupListViewListeners() {
@@ -66,6 +68,7 @@ public class MainActivity extends AppCompatActivity {
                         Intent launchEditItemActivity = new Intent(MainActivity.this, EditItemActivity.class);
                         launchEditItemActivity.setAction(Intent.ACTION_EDIT);
                         launchEditItemActivity.putExtra("itemUnderEdit", itemUnderEdit);
+                        launchEditItemActivity.putExtra("pos", pos);
                         startActivityForResult(launchEditItemActivity, REQUEST_CODE);
                     }
                 });
