@@ -1,6 +1,7 @@
 package engineering.aspire.simpletodo;
 
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -20,6 +21,7 @@ public class MainActivity extends AppCompatActivity {
     ArrayList<String> items;
     ArrayAdapter<String> itemsAdapter;
     ListView lvItems;
+    MediaPlayer removeItemSoundEffect;
 
     private final int REQUEST_CODE = 100;
 
@@ -27,6 +29,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
         lvItems = (ListView)findViewById(R.id.lvItems);
         items = new ArrayList<>();
         readItems();
@@ -42,17 +45,18 @@ public class MainActivity extends AppCompatActivity {
 
         int pos = data.getExtras().getInt("pos");
 
-        // TODO: Update ListView item with data Intent returned from EditItemActivity
         items.set(pos, editedItemText);
         itemsAdapter.notifyDataSetChanged();
     }
 
     private void setupListViewListeners() {
+        removeItemSoundEffect = MediaPlayer.create(this, R.raw.pewn);
         lvItems.setOnItemLongClickListener(
                 new AdapterView.OnItemLongClickListener() {
                     @Override
                     public boolean onItemLongClick(AdapterView<?> adapter,
                                                    View item, int pos, long id) {
+                        removeItemSoundEffect.start();
                         items.remove(pos);
                         itemsAdapter.notifyDataSetChanged();
                         writeItems();
