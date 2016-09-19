@@ -4,7 +4,7 @@
 
 Submitted by: **Thomas Phillips**
 
-Time spent: **10** hours spent in total
+Time spent: **10-15** hours spent in total
 
 ## User Stories
 
