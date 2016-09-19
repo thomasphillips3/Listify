@@ -1,4 +1,4 @@
-package engineering.aspire.simpletodo;
+package engineering.aspire.listify;
 
 import org.junit.Test;
 
