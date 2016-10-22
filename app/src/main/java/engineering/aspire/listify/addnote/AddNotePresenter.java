@@ -8,6 +8,7 @@ import java.util.Date;
 
 import engineering.aspire.listify.data.NotesRepository;
 import engineering.aspire.listify.util.ImageFile;
+import engineering.aspire.listify.data.Note;
 
 import static com.google.common.base.Preconditions.checkNotNull;
 
@@ -17,8 +18,7 @@ import static com.google.common.base.Preconditions.checkNotNull;
 
 public class AddNotePresenter implements AddNoteContract.UserActionsListener {
 
-    @NonNullclear
-
+    @NonNull
     private final NotesRepository mNotesRepository;
     @NonNull
     private final AddNoteContract.View mAddNoteView;
@@ -70,9 +70,7 @@ public class AddNotePresenter implements AddNoteContract.UserActionsListener {
         captureFailed();
     }
 
-    private void captureFailed
-
-    {
+    private void captureFailed() {
         mImageFile.delete();
         mAddNoteView.showImageError();
     }
