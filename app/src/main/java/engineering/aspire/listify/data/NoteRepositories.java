@@ -18,7 +18,7 @@ public class NoteRepositories {
     public synchronized static NotesRepository getInMemoryRepoInstance(@NonNull NotesServiceApi notesServiceApi) {
         checkNotNull(notesServiceApi);
         if (null == repository) {
-            repository = new InMemoryNotessRepository(notesServiceApi);
+            repository = new InMemoryNotesRepository(notesServiceApi);
         }
         return repository;
     }

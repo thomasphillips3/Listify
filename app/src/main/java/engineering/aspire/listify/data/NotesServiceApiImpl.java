@@ -1,10 +1,10 @@
 package engineering.aspire.listify.data;
 
+import android.os.Handler;
 import android.util.ArrayMap;
 
 import java.util.ArrayList;
 import java.util.List;
-import android.os.Handler;
 
 /**
  * Created by thomas on 10/24/16.
@@ -17,7 +17,7 @@ public class NotesServiceApiImpl implements NotesServiceApi {
             NotesServiceApiEndpoint.loadPersistedNotes();
 
     @Override
-    public void getAllNotes(NotesServiceCallback<List<Note>> callback) {
+    public void getAllNotes(final NotesServiceCallback<List<Note>> callback) {
         // Simulate network with a delay in execution.
         Handler handler = new Handler();
         handler.postDelayed(new Runnable() {

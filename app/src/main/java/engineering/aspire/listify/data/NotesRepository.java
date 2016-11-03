@@ -2,7 +2,9 @@ package engineering.aspire.listify.data;
 
 import android.support.annotation.NonNull;
 
-import static android.icu.lang.UCharacter.GraphemeClusterBreak.L;
+import java.util.List;
+
+//import static android.icu.lang.UCharacter.GraphemeClusterBreak.L;
 
 /**
  * Created by thomas on 10/16/16.

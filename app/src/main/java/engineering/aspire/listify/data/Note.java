@@ -49,7 +49,7 @@ public final class Note {
     }
 
     @Nullable
-    public String getImageUrl {
+    public String getImageUrl() {
         return mImageUrl;
     }
 

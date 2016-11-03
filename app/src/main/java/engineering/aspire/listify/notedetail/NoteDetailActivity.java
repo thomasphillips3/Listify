@@ -1,4 +1,4 @@
-package engineering.aspire.listify.addnote;
+package engineering.aspire.listify.notedetail;
 
 import android.os.Bundle;
 import android.support.annotation.VisibleForTesting;
@@ -14,29 +14,31 @@ import engineering.aspire.listify.R;
 import engineering.aspire.listify.util.EspressoIdlingResource;
 
 /**
- * Created by thomas on 10/17/16.
+ * Created by thomas on 10/24/16.
  */
 
-public class AddNoteActivity extends AppCompatActivity {
+public class NoteDetailActivity extends AppCompatActivity {
+
+    public static final String EXTRA_NOTE_ID = "NOTE_ID";
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_addnote);
+
+        setContentView(R.layout.activity_detail);
 
         // Toolbar setup
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        ActionBar actionBar = getSupportActionBar();
-        actionBar.setTitle("New Note");
-        actionBar.setDisplayHomeAsUpEnabled(true);
-        actionBar.setDisplayShowHomeEnabled(true);
+        ActionBar ab = getSupportActionBar();
+        ab.setDisplayHomeAsUpEnabled(true);
+        ab.setDisplayShowHomeEnabled(true);
 
-        if (null == savedInstanceState) {
-            initFragment(AddNoteFragment.newInstance());
-        }
+        // Get ID of the requested note.
+        String noteId = getIntent().getStringExtra(EXTRA_NOTE_ID);
+
+        initFragment(NoteDetailFragment.newInstance(noteId));
     }
-
     @Override
     public boolean onSupportNavigateUp() {
         onBackPressed();
@@ -44,7 +46,7 @@ public class AddNoteActivity extends AppCompatActivity {
     }
 
     private void initFragment(Fragment detailFragment) {
-        // Add the AddNoteFragment to the layout
+        // Add the NotesDetailFragment to the layout
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction transaction = fragmentManager.beginTransaction();
         transaction.add(R.id.contentFrame, detailFragment);

@@ -10,8 +10,8 @@ public final class NotesServiceApiEndpoint {
 
     static {
         DATA = new ArrayMap(2);
-        addNote("I think this will be in a unit test", null);
-        addNote("This is another unit test", null);
+        addNote("I think this will be in a unit test", "one more thing", null);
+        addNote("This is another unit test", "and something else", null);
     }
 
     private final static ArrayMap<String, Note> DATA;

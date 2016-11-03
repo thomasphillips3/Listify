@@ -2,6 +2,10 @@ package engineering.aspire.listify.notes;
 
 import android.support.annotation.NonNull;
 
+import java.util.List;
+
+import engineering.aspire.listify.data.Note;
+
 /**
  * Created by thomas on 10/17/16.
  */

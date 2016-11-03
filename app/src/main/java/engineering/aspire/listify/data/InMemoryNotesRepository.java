@@ -25,7 +25,7 @@ public class InMemoryNotesRepository implements NotesRepository {
     }
 
     @Override
-    public void getNotes(@NonNull LoadNotesCallback callback) {
+    public void getNotes(@NonNull final LoadNotesCallback callback) {
         checkNotNull(callback);
 
         // Load from API only if necessary

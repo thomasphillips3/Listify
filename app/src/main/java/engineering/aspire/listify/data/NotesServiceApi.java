@@ -1,5 +1,7 @@
 package engineering.aspire.listify.data;
 
+import java.util.List;
+
 /**
  * Created by thomas on 10/16/16.
  */

@@ -19,8 +19,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import engineering.aspire.listify.util.EspressoIdlingResource;
-
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
@@ -29,6 +27,10 @@ import com.bumptech.glide.request.animation.GlideAnimation;
 import com.bumptech.glide.request.target.GlideDrawableImageViewTarget;
 
 import java.io.IOException;
+
+import engineering.aspire.listify.R;
+import engineering.aspire.listify.testing.Injection;
+import engineering.aspire.listify.util.EspressoIdlingResource;
 
 import static com.google.common.base.Preconditions.checkState;
 
@@ -48,7 +50,7 @@ public class AddNoteFragment extends Fragment implements AddNoteContract.View {
 
     private ImageView mImageThumbnail;
 
-    private static AddNoteFragment newInstance() { return new AddNoteFragment(); }
+    public static AddNoteFragment newInstance() { return new AddNoteFragment(); }
 
     public AddNoteFragment() {}
 
@@ -64,14 +66,15 @@ public class AddNoteFragment extends Fragment implements AddNoteContract.View {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mActionListener.saveNote(mTitle.getText().toString());
+                mActionListener.saveNote(mTitle.getText().toString(),
+                        mDescription.getText().toString());
             }
         });
     }
 
     @Nullable
     @Override
-    public void onCreateView(LayoutInflater inflater,
+    public View onCreateView(LayoutInflater inflater,
                              ViewGroup container,
                              Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.fragment_addnote, container, false);
@@ -109,7 +112,7 @@ public class AddNoteFragment extends Fragment implements AddNoteContract.View {
 
     @Override
     public void showEmptyNoteError() {
-        Snackbar.make(mTItle, "Quit trippin. Note is empty.", Snackbar.LENGTH_LONG).show();
+        Snackbar.make(mTitle, "Quit trippin. Note is empty.", Snackbar.LENGTH_LONG).show();
     }
 
     @Override
@@ -123,7 +126,7 @@ public class AddNoteFragment extends Fragment implements AddNoteContract.View {
         // Launch camera
         Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
         // Make sure camera app is available to handle intent
-        if(takePictureIntent.resolveActivity(getContent().getPackageManager()) != null) {
+        if(takePictureIntent.resolveActivity(getContext().getPackageManager()) != null) {
             takePictureIntent.putExtra(MediaStore.EXTRA_OUTPUT, Uri.parse(saveTo));
             startActivityForResult(takePictureIntent, REQUEST_CODE_IMAGE_CAPTURE);
         } else {
