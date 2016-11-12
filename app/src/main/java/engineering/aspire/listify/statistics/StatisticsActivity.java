@@ -4,7 +4,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.app.ActionBar;
 import android.support.v7.widget.Toolbar;
-import android.R;
+import engineering.aspire.listify.R;
 
 /**
  * Created by thomas on 10/24/16.

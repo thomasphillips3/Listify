@@ -15,8 +15,8 @@
             android:name=".notes.NotesActivity"
             android:theme="@style/AppTheme.OverlapSystemBar">
             <intent-filter>
-                <action android:name="androidintent.action.MAIN" />
-                <category android:name="androidintent.category.LAUNCHER" />
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity android:name=".notedetail.NoteDetailActivity" />
